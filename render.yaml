@@ -1,0 +1,9 @@
+services:
+  # A Docker web service
+  - type: web
+    name: GPL
+    runtime: python
+    plan: free
+    autoDeploy: false
+    buildCommand: poetry install
+    startCommand: uvicorn main:app --host 0.0.0.0 --port \$PORT
