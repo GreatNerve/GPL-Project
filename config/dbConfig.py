@@ -1,7 +1,5 @@
 from mongoengine import connect
-
-MONGO_DB_URI = 'mongodb://localhost:27017'
-MONGO_DB_NAME = 'GPL_DB'
+from config import MONGO_DB_URI, MONGO_DB_NAME
 
 def init_db():
     try:
