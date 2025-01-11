@@ -6,6 +6,8 @@ from route.UserRoute import router as user_router
 from middleware.HandleExceptions import HandleExceptionsMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from mongoengine import disconnect
+import uvicorn
+
 @asynccontextmanager
 async def lifespan_context(app_instance: FastAPI):
     print("Application starting up. Initializing...")
@@ -28,3 +30,6 @@ app = FastAPI(
     lifespan=lifespan_context, middleware=middleware)
 
 app.include_router(user_router, prefix="/api/v1/user", tags=["User"])
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
