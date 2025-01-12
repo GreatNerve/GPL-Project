@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from mongoengine import disconnect
 import uvicorn
 
-@asynccontextmanager
+@asynccontextmanager    
 async def lifespan_context(app_instance: FastAPI):
     print("Application starting up. Initializing...")
     init_db()
