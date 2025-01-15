@@ -22,13 +22,22 @@ async def on_cleanup():
 
 middleware = [
     Middleware(HandleExceptionsMiddleware),
-    Middleware(CORSMiddleware, allow_origins=["*"])
 ]
+
+
 
 app = FastAPI(
     title="GPL API",
     version="0.1.0",
     lifespan=lifespan_context, middleware=middleware)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(user_router, prefix="/api/v1")
 app.include_router(travel_router, prefix="/api/v1")
