@@ -22,7 +22,7 @@ async def on_cleanup():
 
 middleware = [
     Middleware(HandleExceptionsMiddleware),
-    # Middleware(CORSMiddleware, allow_origins=["*"])
+    Middleware(CORSMiddleware, allow_origins=["*"])
 ]
 
 app = FastAPI(

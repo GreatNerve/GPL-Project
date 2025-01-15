@@ -8,9 +8,8 @@ from src.config import CLERK_SECRET_KEY, CLERK_AUTHROIZ_DOMAIN
 security = HTTPBearer()
 
 async def get_current_user(request: Request, credentials: HTTPAuthorizationCredentials = Security(security)):
-    if not CLERK_SECRET_KEY:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Clerk Secret Key not found")
     try:
+
         sdk = Clerk(bearer_auth="sk_test_4udgHjcN8C2sn1woLPRtqgtXWavWXjI0UtBKlXEFkT")
         request_state = authenticate_request(
             sdk,
