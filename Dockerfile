@@ -5,8 +5,6 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Set environment variables
-ENV MONGO_DB_URI="mongodb+srv://dheerajsharmatechno:AsvY87FjENc5DMcd@cluster0.wd2em.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-ENV MONGO_DB_NAME="GPL_DB"
 
 # Copy the pyproject.toml and poetry.lock files to the container
 COPY pyproject.toml poetry.lock /app/

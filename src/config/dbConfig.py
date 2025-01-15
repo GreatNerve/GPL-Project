@@ -1,5 +1,5 @@
 from mongoengine import connect
-from config import MONGO_DB_URI, MONGO_DB_NAME
+from src.config import MONGO_DB_URI, MONGO_DB_NAME
 
 def init_db():
     try:

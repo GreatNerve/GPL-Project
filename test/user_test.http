@@ -4,6 +4,6 @@ Content-Type: application/json
 {
   "name": "testuser",
   "email": "testuser@example.com",
-  "user_app_write_id": "123e4567-e89b-12d3-a456-426614174000"
+  "clerk_id": "123e4567-e89b-12d3-a456-426614174000"
 }
 

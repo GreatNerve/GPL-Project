@@ -37,3 +37,7 @@ class PyObjectId(ObjectId):
 class BaseModelEncoder(BaseModel):
     class Config:
         json_encoders = {ObjectId: str}
+
+
+class MessageResponse(BaseModel):
+    detail: str

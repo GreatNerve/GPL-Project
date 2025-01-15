@@ -8,5 +8,7 @@ import os
 MONGO_DB_URI = os.getenv("MONGO_DB_URI")
 MONGO_DB_NAME = os.getenv("MONGO_DB_NAME")
 
-print(f"MongoDB URI: {MONGO_DB_URI}")
+CLERK_SECRET_KEY = os.getenv("CLERK_SECRET_KEY")
+CLERK_AUTHROIZ_DOMAIN = os.getenv("CLERK_AUTHROIZ_DOMAIN")
+
 print(f"MongoDB Name: {MONGO_DB_NAME}")
