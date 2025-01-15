@@ -3,22 +3,21 @@ from fastapi import HTTPException, Security, status, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from clerk_backend_api import Clerk
 from clerk_backend_api.jwks_helpers import authenticate_request, AuthenticateRequestOptions
-from src.config import CLERK_SECRET_KEY, CLERK_AUTHROIZ_DOMAIN
+from src.config import CLERK_SECRET_KEY, CLERK_AUTHORIZED_DOMAIN
 
 security = HTTPBearer()
 
 async def get_current_user(request: Request, credentials: HTTPAuthorizationCredentials = Security(security)):
     try:
 
-        sdk = Clerk(bearer_auth="sk_test_4udgHjcN8C2sn1woLPRtqgtXWavWXjI0UtBKlXEFkT")
+        sdk = Clerk(bearer_auth=CLERK_SECRET_KEY)
         request_state = authenticate_request(
             sdk,
             request,
             options=AuthenticateRequestOptions(
-                authorized_parties= CLERK_AUTHROIZ_DOMAIN.split(",") if CLERK_AUTHROIZ_DOMAIN else []
+                authorized_parties= CLERK_AUTHORIZED_DOMAIN.split(",") if CLERK_AUTHORIZED_DOMAIN else []
             ),
         )
-        print("Request State: ", request_state)
         user_id = request_state.payload.get("sub")
         if not request_state.is_signed_in or not user_id:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized")

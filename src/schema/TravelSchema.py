@@ -46,6 +46,11 @@ class ItineraryDay(TypedDict):
     budget: float
     spent_meal: float
     miscellaneous: float
+    
+class Member(BaseModel):
+    id : str
+    name: str
+    email: EmailStr
 
 class TravelResponse(BaseModelEncoder):
     id: str
@@ -55,8 +60,8 @@ class TravelResponse(BaseModelEncoder):
     total_budget: float
     activities: List[str] = []
     itinerary: List[ItineraryItem] = []
-    created_by: str
-    members: List[str] = [] 
+    created_by: Member
+    members: List[Member] = []
     created_at: datetime
     short_id : str
     
