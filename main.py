@@ -21,7 +21,7 @@ async def on_cleanup():
     disconnect()
 
 middleware = [
-    Middleware(HandleExceptionsMiddleware)
+    Middleware(HandleExceptionsMiddleware),
     Middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 ]
 
