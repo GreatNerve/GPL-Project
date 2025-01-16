@@ -10,9 +10,9 @@ security = HTTPBearer()
 async def get_current_user(request: Request, credentials: HTTPAuthorizationCredentials = Security(security)):
     try:
 
-        sdk = Clerk(bearer_auth="sk_test_4udgHjcN8C2sn1woLPRtqgtXWavWXjI0UtBKlXEFkT")
+        clent = Clerk(bearer_auth="sk_test_4udgHjcN8C2sn1woLPRtqgtXWavWXjI0UtBKlXEFkT")
         request_state = authenticate_request(
-            sdk,
+            clent,
             request,
             options=AuthenticateRequestOptions(
                 authorized_parties= CLERK_AUTHORIZED_DOMAIN.split(",") if CLERK_AUTHORIZED_DOMAIN else []
