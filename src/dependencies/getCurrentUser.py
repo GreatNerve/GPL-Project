@@ -10,14 +10,15 @@ security = HTTPBearer()
 async def get_current_user(request: Request, credentials: HTTPAuthorizationCredentials = Security(security)):
     try:
 
-        clent = Clerk(bearer_auth="sk_test_4udgHjcN8C2sn1woLPRtqgtXWavWXjI0UtBKlXEFkT")
+        sdk = Clerk(bearer_auth="sk_test_4udgHjcN8C2sn1woLPRtqgtXWavWXjI0UtBKlXEFkT")
         request_state = authenticate_request(
-            clent,
+            sdk,
             request,
             options=AuthenticateRequestOptions(
                 authorized_parties= CLERK_AUTHORIZED_DOMAIN.split(",") if CLERK_AUTHORIZED_DOMAIN else []
             ),
         )
+        print("Request State: ", request_state)
         user_id = request_state.payload.get("sub")
         if not request_state.is_signed_in or not user_id:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized")

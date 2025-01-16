@@ -36,8 +36,6 @@ async def get_travels(clerk_id : str = Security(get_current_user)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
     
     travels = Travel.objects(Q(created_by=user.id) | Q(members__in=[user.id])).all()
-    if not travels:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No travels found")
     
     travel_responses = []
     for travel in travels:

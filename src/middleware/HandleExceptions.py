@@ -2,8 +2,6 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 from fastapi import HTTPException, status
-from mongoengine import get_db
-import time
 
 class HandleExceptionsMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
