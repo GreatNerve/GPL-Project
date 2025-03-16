@@ -1,6 +1,6 @@
-# GPL Backend
+# Travel-Buddy
 
-This project is the backend for the GPL application
+This project is the backend for the Travel-Buddy application
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ To install the project, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/GreatNerve/GPL-Backend.git
+    git clone https://github.com/GreatNerve/Travel-Buddy.git
     ```
 2. Navigate to the project directory:
     ```bash
